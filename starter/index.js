@@ -1,4 +1,5 @@
 const fs = require('fs/promises');
+const fsSync = require('fs');
 const http = require('http');
 const path = require('path');
 const slugify = require('slugify');
@@ -34,17 +35,61 @@ async function loadData() {
     return JSON.parse(data);
   } catch (err) {
     console.error('Error reading data.json:', err);
-    process.exit(1); // oprește serverul dacă nu există date
+    process.exit(1);
   }
 }
 
-// Helper pentru trimitere răspuns
+// Helper pentru trimiterea răspunsului
 const sendResponse = (res, statusCode, contentType, content) => {
-  res.writeHead(statusCode, { 'Content-type': contentType });
+  res.writeHead(statusCode, { 'Content-Type': contentType });
   res.end(content);
 };
 
-// Funcție principală pentru pornire server
+// Servește fișiere statice (inclusiv video)
+async function serveStaticFile(req, res) {
+  const filePath = path.join(__dirname, req.url);
+  const ext = path.extname(filePath).toLowerCase();
+
+  // Tipuri MIME de bază
+  const mimeTypes = {
+    '.html': 'text/html',
+    '.css': 'text/css',
+    '.js': 'text/javascript',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.mp4': 'video/mp4',
+    '.webm': 'video/webm',
+    '.ogg': 'video/ogg',
+    '.svg': 'image/svg+xml',
+  };
+
+  if (!mimeTypes[ext]) return false; // nu e un fișier static recunoscut
+
+  try {
+    if (ext.startsWith('.mp')) {
+      // pentru video-uri – citire streaming
+      const stat = fsSync.statSync(filePath);
+      res.writeHead(200, {
+        'Content-Type': mimeTypes[ext],
+        'Content-Length': stat.size,
+      });
+      fsSync.createReadStream(filePath).pipe(res);
+    } else {
+      // pentru restul fișierelor
+      const data = await fs.readFile(filePath);
+      sendResponse(res, 200, mimeTypes[ext], data);
+    }
+    return true;
+  } catch {
+    sendResponse(res, 404, 'text/html', '<h1>Static file not found</h1>');
+    return true;
+  }
+}
+
+// Funcția principală
 async function startServer() {
   const { tempOverview, tempCard, tempProduct } = await loadTemplates();
   const dataObj = await loadData();
@@ -53,12 +98,16 @@ async function startServer() {
   const slugs = dataObj.map(el => slugify(el.productName, { lower: true }));
   console.log('Slugs:', slugs);
 
-  const server = http.createServer((req, res) => {
+  const server = http.createServer(async (req, res) => {
     const myURL = new URL(req.url, `http://${req.headers.host}`);
     const pathname = myURL.pathname;
     const query = myURL.searchParams;
 
     console.log(`${req.method} ${pathname}`);
+
+    // Înainte de orice — verificăm dacă e fișier static
+    const isStatic = await serveStaticFile(req, res);
+    if (isStatic) return;
 
     // Overview page
     if (pathname === '/' || pathname === '/overview') {
@@ -77,7 +126,7 @@ async function startServer() {
         sendResponse(res, 200, 'text/html', output);
       }
 
-    // API
+    // API page
     } else if (pathname === '/api') {
       sendResponse(res, 200, 'application/json', JSON.stringify(dataObj));
 
@@ -88,9 +137,9 @@ async function startServer() {
   });
 
   server.listen(8000, '127.0.0.1', () => {
-    console.log('Server running on http://127.0.0.1:8000');
+    console.log('🚀 Server running on http://127.0.0.1:8000');
   });
 }
 
-// Pornire server
+// Start
 startServer();

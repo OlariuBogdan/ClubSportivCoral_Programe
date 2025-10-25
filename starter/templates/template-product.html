@@ -25,14 +25,54 @@
       }
 
       body {
-        padding: 5rem 5rem 10rem;
-        line-height: 1.7;
         font-family: 'Nunito Sans', sans-serif;
         color: #eee;
         min-height: 100vh;
-        background: linear-gradient(to bottom right, #000000, #8b0000);
+        overflow-x: hidden;
+        position: relative;
+        background-color: black;
+        animation: fadeIn 1.5s ease-in;
       }
 
+      /* === VIDEO BACKGROUND === */
+      .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        overflow: hidden;
+      }
+
+      .video-background video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        opacity: 0.9;
+        filter: brightness(45%);
+      }
+
+      /* === OVERLAY === */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background: linear-gradient(
+          to bottom right,
+          rgba(0, 0, 0, 0.8),
+          rgba(139, 0, 0, 0.7)
+        );*/
+        z-index: -1;
+      }
+
+      /* === TITLU === */
       h1 {
         font-family: 'Megrim', sans-serif;
         font-size: 6rem;
@@ -41,6 +81,7 @@
         text-align: center;
         position: relative;
         word-spacing: 3px;
+        margin-top: 6rem;
       }
 
       h1::before {
@@ -60,13 +101,15 @@
       .container {
         width: 95rem;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        padding: 5rem;
       }
 
       .product {
         width: 60rem;
-        margin: 0 auto;
-        margin-top: 9rem;
-        background: #1a1a1a;
+        margin: 9rem auto;
+        background: rgba(26, 26, 26, 0.9);
         box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.6);
         position: relative;
         border: 2px solid #ff0000;
@@ -150,8 +193,7 @@
         align-items: center;
       }
 
-      .product__back:hover,
-      .product__back:active {
+      .product__back:hover {
         background-color: #ff0000;
       }
 
@@ -201,31 +243,42 @@
         transition: all 0.3s;
       }
 
-      .product__link:hover,
-      .product__link:active {
+      .product__link:hover {
         background-color: #8b0000;
         transform: scale(1.1) skewX(-20deg);
       }
 
-      .product__link span {
-        transform: skewX(20deg);
-      }
-
       .emoji-left { font-size: 2rem; margin-right: 1rem; }
-      .emoji-right { font-size: 2rem; margin-left: 1rem; }
       .not-organic { display: none; }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
     </style>
   </head>
 
   <body>
+    <!-- VIDEO BACKGROUND -->
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="templates/main_no_sound.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay"></div>
+
     <div class="container">
-      <h1>Club Coral Grappling </h1>
+      <h1>Club Coral Grappling</h1>
 
       <figure class="product">
         <div class="product__organic {%NOT_ORGANIC%}"><h5>Pro</h5></div>
         <a href="/overview" class="product__back">
-          <span class="emoji-left">👈</span>Back
+          <span class="emoji-left">👈</span> Back
         </a>
+
         <div class="product__hero">
           <span class="product__emoji product__emoji--1">{%IMAGE%}</span>
           <span class="product__emoji product__emoji--2">{%IMAGE%}</span>
@@ -251,11 +304,8 @@
           <span>Add to shopping cart ({%PRICE%}€)</span>
         </a>
 
-        <p class="product__description">
-          {%DESCRIPTION%}
-        </p>
+        <p class="product__description">{%DESCRIPTION%}</p>
       </figure>
-      
     </div>
   </body>
 </html>
