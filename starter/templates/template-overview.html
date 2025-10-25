@@ -8,12 +8,7 @@
       href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/ear-of-maize_1f33d.png"
-    />
-
-    <title>NODE FARM</title>
+    <title>Club Coral - Grappling</title>
 
     <style>
       *,
@@ -33,15 +28,15 @@
         padding: 5rem 5rem 10rem;
         line-height: 1.7;
         font-family: 'Nunito Sans', sans-serif;
-        color: #555;
+        color: #eee;
         min-height: 100vh;
-        background: linear-gradient(to bottom right, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom right, #000000, #8b0000);
       }
 
       h1 {
         font-family: 'Megrim', sans-serif;
         font-size: 6rem;
-        color: white;
+        color: #ff0000;
         transform: skewY(-5deg);
         text-align: center;
         position: relative;
@@ -56,7 +51,7 @@
         position: absolute;
         top: 105%;
         left: 50%;
-        background: linear-gradient(to bottom, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom, #8b0000, #ff0000);
         opacity: 0.8;
         z-index: -1;
         transform: skewY(370deg) translate(-50%, -50%);
@@ -69,15 +64,21 @@
 
       .cards-container {
         margin-top: 8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
       }
 
       .card {
-        background: white;
-        box-shadow: 0 2rem 6rem 1rem rgba(0, 0, 0, 0.15);
+        background: #1a1a1a;
+        box-shadow: 0 2rem 6rem 1rem rgba(0, 0, 0, 0.5);
         margin-bottom: 5rem;
         transform: skewX(-20deg);
         display: flex;
         transition: all 0.5s;
+        border: 2px solid #ff0000;
+        border-radius: 1rem;
       }
 
       .card__emoji {
@@ -89,11 +90,13 @@
       }
 
       .card__title-box {
-        background: linear-gradient(to bottom, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom, #8b0000, #ff0000);
         margin-right: auto;
         display: flex;
         align-items: center;
         padding: 0 3rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
       }
 
       .card__title {
@@ -109,7 +112,7 @@
 
       .card__detail-box {
         align-self: stretch;
-        border-right: 1px solid #ddd;
+        border-right: 1px solid #555;
         display: flex;
         align-items: center;
       }
@@ -123,27 +126,19 @@
         font-size: 1.8rem;
         transform: skewX(20deg);
         padding: 1.75rem;
-      }
-
-      .card__detail--organic {
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 1.9rem;
-        background-image: linear-gradient(to right, #9be15d, #00e3ae);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: #eee;
       }
 
       .card__detail--price {
         font-weight: 900;
         font-size: 1.9rem;
+        color: #ff4d4d;
       }
 
       .card__link:link,
       .card__link:visited {
         flex: 0 0 auto;
-        background-color: #79e17b;
+        background-color: #ff0000;
         color: white;
         font-size: 1.6rem;
         font-weight: 900;
@@ -155,20 +150,17 @@
         align-items: center;
         justify-content: center;
         transition: all 0.3s;
+        border-radius: 0 1rem 1rem 0;
       }
 
       .card__link:hover,
       .card__link:active {
-        background-color: #9be15d;
-      }
-
-      .card__link span {
-        transform: skewX(20deg);
+        background-color: #8b0000;
       }
 
       .card:hover {
         transform: skewX(-20deg) scale(1.08);
-        box-shadow: 0 3rem 8rem 2rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0 3rem 8rem 2rem rgba(0, 0, 0, 0.7);
       }
 
       .emoji-left {
@@ -189,7 +181,7 @@
 
   <body>
     <div class="container">
-      <h1>🌽 Node Farm 🥦</h1>
+      <h1>Club Coral Grappling </h1>
 
       <div class="cards-container">
         {%PRODUCT_CARDS%}

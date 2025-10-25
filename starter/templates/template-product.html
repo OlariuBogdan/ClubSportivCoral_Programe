@@ -8,12 +8,7 @@
       href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/ear-of-maize_1f33d.png"
-    />
-
-    <title>{%PRODUCTNAME%} {%IMAGE%} /// NODE FARM</title>
+    <title>{%PRODUCTNAME%} /// Club Coral Grappling</title>
 
     <style>
       *,
@@ -33,15 +28,15 @@
         padding: 5rem 5rem 10rem;
         line-height: 1.7;
         font-family: 'Nunito Sans', sans-serif;
-        color: #555;
+        color: #eee;
         min-height: 100vh;
-        background: linear-gradient(to bottom right, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom right, #000000, #8b0000);
       }
 
       h1 {
         font-family: 'Megrim', sans-serif;
         font-size: 6rem;
-        color: white;
+        color: #ff0000;
         transform: skewY(-5deg);
         text-align: center;
         position: relative;
@@ -56,7 +51,7 @@
         position: absolute;
         top: 105%;
         left: 50%;
-        background: linear-gradient(to bottom, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom, #8b0000, #ff0000);
         opacity: 0.8;
         z-index: -1;
         transform: skewY(370deg) translate(-50%, -50%);
@@ -71,9 +66,11 @@
         width: 60rem;
         margin: 0 auto;
         margin-top: 9rem;
-        background: white;
-        box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
+        background: #1a1a1a;
+        box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.6);
         position: relative;
+        border: 2px solid #ff0000;
+        border-radius: 1rem;
       }
 
       .product__hero {
@@ -90,7 +87,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-image: linear-gradient(to left bottom, #9be15d, #00e3ae);
+        background-image: linear-gradient(to left bottom, #8b0000, #ff0000);
         opacity: 0.5;
         z-index: 100;
       }
@@ -100,52 +97,15 @@
         position: absolute;
       }
 
-      .product__emoji--1 {
-        top: -4rem;
-        left: -2rem;
-        z-index: 10;
-      }
-
-      .product__emoji--2 {
-        top: -6rem;
-        left: 9rem;
-      }
-
-      .product__emoji--3 {
-        top: -4rem;
-        right: 15rem;
-      }
-
-      .product__emoji--4 {
-        top: -5rem;
-        right: 2rem;
-        z-index: 10;
-      }
-
-      .product__emoji--5 {
-        bottom: -9rem;
-        left: 18rem;
-      }
-
-      .product__emoji--6 {
-        bottom: -8rem;
-        left: 5rem;
-      }
-
-      .product__emoji--7 {
-        bottom: -12rem;
-        right: 14rem;
-      }
-
-      .product__emoji--8 {
-        bottom: -8rem;
-        right: -2rem;
-      }
-
-      .product__emoji--9 {
-        top: -7rem;
-        left: 19rem;
-      }
+      .product__emoji--1 { top: -4rem; left: -2rem; z-index: 10; }
+      .product__emoji--2 { top: -6rem; left: 9rem; }
+      .product__emoji--3 { top: -4rem; right: 15rem; }
+      .product__emoji--4 { top: -5rem; right: 2rem; z-index: 10; }
+      .product__emoji--5 { bottom: -9rem; left: 18rem; }
+      .product__emoji--6 { bottom: -8rem; left: 5rem; }
+      .product__emoji--7 { bottom: -12rem; right: 14rem; }
+      .product__emoji--8 { bottom: -8rem; right: -2rem; }
+      .product__emoji--9 { top: -7rem; left: 19rem; }
 
       .product__organic {
         position: absolute;
@@ -154,10 +114,10 @@
         z-index: 1000;
         height: 11rem;
         width: 11rem;
-        background-image: linear-gradient(to bottom, #9be15d, #00e3ae);
+        background-image: linear-gradient(to bottom, #8b0000, #ff0000);
         border-radius: 50%;
         transform: rotate(15deg);
-        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -180,9 +140,9 @@
         text-transform: uppercase;
         text-decoration: none;
         z-index: 1000;
-        color: #555;
-        background-color: white;
-        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+        color: #eee;
+        background-color: #1a1a1a;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
         border-radius: 100rem;
         padding: 0 2rem;
         transition: all 0.3s;
@@ -192,11 +152,11 @@
 
       .product__back:hover,
       .product__back:active {
-        background-color: #79e17b;
+        background-color: #ff0000;
       }
 
       .product__name {
-        background: linear-gradient(to bottom, #9be15d, #00e3ae);
+        background: linear-gradient(to bottom, #8b0000, #ff0000);
         padding: 1rem;
         font-family: 'Megrim', sans-serif;
         font-size: 4rem;
@@ -206,24 +166,26 @@
       }
 
       .product__details {
-        background-color: #eee;
+        background-color: #222;
         padding: 4rem 6rem;
         font-size: 1.9rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1.5rem;
+        color: #eee;
       }
 
       .product__description {
         padding: 5rem 6rem;
         font-size: 1.6rem;
         line-height: 1.8;
+        color: #ddd;
       }
 
       .product__link:link,
       .product__link:visited {
         display: block;
-        background-color: #79e17b;
+        background-color: #ff0000;
         color: white;
         font-size: 1.6rem;
         font-weight: 700;
@@ -232,7 +194,7 @@
         padding: 1.5rem;
         text-align: center;
         transform: scale(1.07) skewX(-20deg);
-        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -241,7 +203,7 @@
 
       .product__link:hover,
       .product__link:active {
-        background-color: #9be15d;
+        background-color: #8b0000;
         transform: scale(1.1) skewX(-20deg);
       }
 
@@ -249,28 +211,18 @@
         transform: skewX(20deg);
       }
 
-      .emoji-left {
-        font-size: 2rem;
-        margin-right: 1rem;
-      }
-
-      .emoji-right {
-        font-size: 2rem;
-        margin-left: 1rem;
-      }
-
-      .not-organic {
-        display: none;
-      }
+      .emoji-left { font-size: 2rem; margin-right: 1rem; }
+      .emoji-right { font-size: 2rem; margin-left: 1rem; }
+      .not-organic { display: none; }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <h1>🌽 Node Farm 🥦</h1>
+      <h1>Club Coral Grappling </h1>
 
       <figure class="product">
-        <div class="product__organic {%NOT_ORGANIC%}"><h5>Organic</h5></div>
+        <div class="product__organic {%NOT_ORGANIC%}"><h5>Pro</h5></div>
         <a href="/overview" class="product__back">
           <span class="emoji-left">👈</span>Back
         </a>
@@ -285,6 +237,7 @@
           <span class="product__emoji product__emoji--8">{%IMAGE%}</span>
           <span class="product__emoji product__emoji--9">{%IMAGE%}</span>
         </div>
+
         <h2 class="product__name">{%PRODUCTNAME%}</h2>
         <div class="product__details">
           <p><span class="emoji-left">🌍</span>From {%FROM%}</p>
@@ -292,12 +245,12 @@
           <p><span class="emoji-left">📦</span>{%QUANTITY%}</p>
           <p><span class="emoji-left">🏷</span>{%PRICE%}€</p>
         </div>
-  
+
         <a href="#" class="product__link">
           <span class="emoji-left">🛒</span>
-          <span>Add to shopping card ({%PRICE%}€)</span>
+          <span>Add to shopping cart ({%PRICE%}€)</span>
         </a>
-  
+
         <p class="product__description">
           {%DESCRIPTION%}
         </p>
