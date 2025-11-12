@@ -4,7 +4,6 @@
   "editor.formatOnSave": true,
   "editor.minimap.enabled": true,
   "workbench.statusBar.visible": true,
-  "workbench.activityBar.visible": true,
   "editor.formatOnSave": false,
   "editor.wordWrap": "on",
   "editor.trimAutoWhitespace": false,
