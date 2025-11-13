@@ -92,7 +92,7 @@
         position: absolute;
         top: 105%;
         left: 50%;
-        background: linear-gradient(to bottom, #8b0000, #ff0000);
+       /* background: linear-gradient(to bottom, #8b0000, #ff0000);*/
         opacity: 0.8;
         z-index: -1;
        /* transform: skewY(370deg) translate(-50%, -50%);*/
@@ -250,6 +250,19 @@
 
       .emoji-left { font-size: 2rem; margin-right: 1rem; }
       .not-organic { display: none; }
+      .panou{
+        font-size: large;
+        background-color: #8b0000;
+        box-shadow: #3b3b3b;
+        float: right;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        padding:2%;
+        opacity:50%;
+        /*border-radius: 10%;*/
+      }
+      .panou:hover{
+        opacity: 90%;
 
       @keyframes fadeIn {
         from { opacity: 0; }
@@ -272,6 +285,9 @@
 
     <div class="container">
       <h1>Club Coral Grappling</h1>
+       <a href="http://localhost:5000/">
+      <h1 class="panou">administrare membri</h1>
+      </a>
 
       <figure class="product">
         <div class="product__organic {%NOT_ORGANIC%}"><h5>Pro</h5></div>
